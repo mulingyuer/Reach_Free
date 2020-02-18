@@ -29,7 +29,7 @@
   <link rel="manifest" href="<?php $this->options->themeUrl('images/favicon/site.webmanifest'); ?>">
   <link rel="mask-icon" href="<?php $this->options->themeUrl('images/favicon/safari-pinned-tab.svg'); ?>" color="#ffffff">
   <!-- 加载css -->
-  <link rel="stylesheet" href="<?php $this->options->themeUrl('css/icons.min.css'); ?>" />
+  <link rel="stylesheet" href="<?php $this->options->themeUrl('css/fonts.css'); ?>" />
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/app.min.css'); ?>" />
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>">
   <!-- 解决低版本ie不支持html5元素和css3 -->
@@ -41,7 +41,6 @@
 </head>
 
 <body class="authentication-bg">
-
   <div class="account-pages mt-5 mb-5">
     <div class="container">
       <div class="row justify-content-center">
@@ -56,7 +55,7 @@
 
             <div class="card-body p-4">
               <div class="text-center">
-                <h1 class="text-error">4<i class="mdi mdi-emoticon-sad"></i>4</h1>
+                <h1 class="text-error text-nowrap">4<i class="fonts icon-nanguohou mx-1" style="font-size: 4.5rem;"></i>4</h1>
                 <h4 class="text-uppercase text-danger mt-3">页面找不到</h4>
                 <p class="text-muted mt-3">您好像走错了路，点击下面回到主页。</p>
 

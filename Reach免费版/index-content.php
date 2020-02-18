@@ -8,6 +8,8 @@
       <div class="row">
         <!-- 载入缩略文章 -->
         <?php $this->need('index-mini-article.php'); ?>
+        <!-- 载入翻页 -->
+        <?php $this->need('acticle-page.php'); ?>
       </div>
     </div>
     <!-- 右侧sidebar -->

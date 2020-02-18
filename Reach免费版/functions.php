@@ -32,6 +32,26 @@ if ($_SERVER['SCRIPT_NAME'] == "/admin/write-post.php") {
 }
 
 
+
+
+//获取随机头像挂件图片链接
+function curThemeURL()
+{
+    $pageURL = 'http';
+    if ($_SERVER["HTTPS"] == "on") {
+        $pageURL .= "s";
+    }
+    $pageURL .= "://";
+
+    if ($_SERVER["SERVER_PORT"] != "80") {
+        $pageURL .= $_SERVER["SERVER_NAME"];
+    } else {
+        $pageURL .= $_SERVER["SERVER_NAME"];
+    }
+    return $pageURL . '/usr/themes/Wooden/images/widget/' . mt_rand(1, 59) . '.png';
+}
+
+
 //评论999个也有回复按钮
 function themeInit($archive)
 {
@@ -195,3 +215,89 @@ function curPageURL()
     }
     return $pageURL;
 };
+
+
+/**按浏览量排序文章**/
+class Widget_Post_views extends Widget_Abstract_Contents
+{
+    public function execute()
+    {
+        $this->parameter->setDefault(array('pageSize' => $this->options->postsListSize));
+        $this->db->fetchAll($this->select()
+            ->where('table.contents.status = ?', 'publish')
+            ->where('table.contents.created < ?', $this->options->time)
+            ->where('table.contents.type = ?', 'post')
+            ->order('views', Typecho_Db::SORT_DESC)
+            ->limit($this->parameter->pageSize), array($this, 'push'));
+    }
+}
+
+//调用指定文章集合
+class Widget_Post_fanjubiao extends Widget_Abstract_Contents
+{
+    public function __construct($request, $response, $params = NULL)
+    {
+        parent::__construct($request, $response, $params);
+        $this->parameter->setDefault(array('pageSize' => $this->options->commentsListSize, 'parentId' => 0, 'ignoreAuthor' => false));
+    }
+    public function execute()
+    {
+        $select  = $this->select()->from('table.contents')
+            ->where("table.contents.password IS NULL OR table.contents.password = ''")
+            ->where('table.contents.type = ?', 'post')
+            ->limit($this->parameter->pageSize)
+            ->order('table.contents.modified', Typecho_Db::SORT_DESC);
+
+        if ($this->parameter->fanjubiao) {
+            $fanju = explode(",", $this->parameter->fanjubiao);
+            $select->where('table.contents.cid in ?', $fanju);
+        }
+        $this->db->fetchAll($select, array($this, 'push'));
+    }
+};
+
+//随机文章cid
+function randomPostMid($limit = 10)
+{
+    $db = Typecho_Db::get();
+    $result = $db->fetchAll(
+        $db->select()->from('table.contents')
+            ->where('status = ?', 'publish')
+            ->where('type = ?', 'post')
+            ->where('created <= unix_timestamp(now())', 'post')
+            ->limit($limit)
+            ->order('RAND()')
+    );
+    $array = array();
+    if ($result) {
+        $i = 1;
+        foreach ($result as $val) {
+            $val = Typecho_Widget::widget('Widget_Abstract_Contents')->push($val);
+            array_push($array, $val['cid']);
+            $i++;
+        }
+    }
+    return implode(',', $array);
+};
+
+// 页面加载时间
+function timer_start()
+{
+    global $timestart;
+    $mtime     = explode(' ', microtime());
+    $timestart = $mtime[1] + $mtime[0];
+    return true;
+}
+timer_start();
+function timer_stop($display = 0, $precision = 3)
+{
+    global $timestart, $timeend;
+    $mtime     = explode(' ', microtime());
+    $timeend   = $mtime[1] + $mtime[0];
+    $timetotal = number_format($timeend - $timestart, $precision);
+    $r         = $timetotal < 1 ? $timetotal * 1000 . " ms" : $timetotal . " s";
+    if ($display) {
+        echo $r;
+    }
+    return $r;
+}

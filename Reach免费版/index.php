@@ -3,9 +3,9 @@
 /**
  * Reach 基于Bootsarp4的响应式博客主题，目的是为了更好的阅读体验，更快捷的使用方式，更优质的UI而存在。
  * 
- * @package Reach 免费版
+ * @package Reach Free
  * @author 木灵鱼儿
- * @version 1.0
+ * @version 1.1
  * @link http://www.mulingyuer.com/
  */
 
@@ -14,6 +14,8 @@ $this->need('head.php');
 ?>
 
 <body class="loading" data-layout="topnav">
+  <!-- 载入loading -->
+  <?php $this->need('loading.php'); ?>
   <div class="wrapper">
     <div class="content-page">
       <div class="content">

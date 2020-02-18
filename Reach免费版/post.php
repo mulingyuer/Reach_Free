@@ -3,6 +3,8 @@
 <?php $this->need('head.php'); ?>
 
 <body class="loading" data-layout="topnav">
+  <!-- 载入loading -->
+  <?php $this->need('loading.php'); ?>
   <div class="wrapper">
     <div class="content-page">
       <div class="content">

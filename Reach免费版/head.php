@@ -33,10 +33,10 @@
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/fonts.css'); ?>" />
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/app.min.css'); ?>" id="light-style" />
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/app-dark.min.css'); ?>" id="dark-style" />
-  <link rel="stylesheet" href="<?php $this->options->themeUrl('css/cmd_md.min.css'); ?>">
+  <link rel="stylesheet" href="<?php $this->options->themeUrl('css/cmd_md.css'); ?>">
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/monokai.css'); ?>"> <!-- 代码高亮 -->
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/jquery.fancybox.min.css'); ?>"> <!-- 图箱 -->
-  <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.min.css'); ?>">
+  <link rel="stylesheet" href="<?php $this->options->themeUrl('css/style.css'); ?>">
   <script type="text/javascript" src="<?php $this->options->themeUrl('js/js_plugin/highlight.pack.js'); ?>"></script><!-- 代码高亮 -->
   <!-- 解决低版本ie不支持html5元素和css3 -->
   <!--[if lt IE 9]>

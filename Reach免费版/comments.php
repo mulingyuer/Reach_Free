@@ -95,21 +95,21 @@
             <!-- user -->
             <div class="col-12 col-md-4 input-group mb-2 mb-md-0">
               <div class="input-group-prepend">
-                <span class="input-group-text">@</span>
+                <span class="input-group-text fonts icon-user-1"></span>
               </div>
               <input type="text" class="form-control" placeholder="Username*" name="author" id="author" value="<?php $this->remember('author'); ?>" required>
             </div>
             <!-- email -->
             <div class="col-12 col-md-4 input-group mb-2 mb-md-0">
               <div class="input-group-prepend">
-                <span class="input-group-text">Email</span>
+                <span class="input-group-text fonts icon-email"></span>
               </div>
               <input type="email" name="mail" id="mail" class="form-control" placeholder="Your Email*" value="<?php $this->remember('mail'); ?>" required />
             </div>
             <!-- url -->
             <div class="col-12 col-md-4 input-group">
               <div class="input-group-prepend">
-                <span class="input-group-text">Url</span>
+                <span class="input-group-text fonts icon-lianjie"></span>
               </div>
               <input type="url" name="url" id="url" class="form-control" placeholder="<?php _e('http(s)://'); ?>" value="<?php $this->remember('url'); ?>" <?php if ($this->options->commentsRequireURL) : ?> required<?php endif; ?>>
             </div>
@@ -119,10 +119,10 @@
             <textarea id="textarea" name="text" rows="4" class="form-control border-0 resize-none" placeholder="说说你的想法...." required><?php $this->remember('text'); ?></textarea>
             <div class="p-2 mt-1 bg-light d-flex justify-content-between align-items-center">
               <div>
-                <a href="#" class="btn btn-sm px-2 font-16 btn-light dropdown-toggle arrow-none" id="comment-expression-buttom" aria-haspopup="true" aria-expanded="false"><i class="fonts icon-smile-solid"></i></a>
-                <a href="#" class="btn btn-sm px-2 font-16 btn-light d-none"><i class="fonts icon-tupian"></i></a>
-                <a href="#" class="btn btn-sm px-2 font-16 btn-light"><i class="fonts icon-map-marker-alt-solid"></i></a>
-                <a href="#" class="btn btn-sm px-2 font-16 btn-light"><i class="fonts icon-paperclip-solid"></i></a>
+                <span class="btn btn-sm px-2 btn-light small" id="limittext-info">还能输入500个字符</span>
+                <!-- <a href="#" class="btn btn-sm px-2 font-16 btn-light"><i class="fonts icon-tupian"></i></a> -->
+                <!-- <a href="#" class="btn btn-sm px-2 font-16 btn-light"><i class="fonts icon-map-marker-alt-solid"></i></a> -->
+                <!-- <a href="#" class="btn btn-sm px-2 font-16 btn-light"><i class="fonts icon-paperclip-solid"></i></a> -->
               </div>
               <button type="submit" class="btn btn-sm btn-success"><i class='fonts icon-paper-plane-solid mr-1'></i>提交</button>
             </div>

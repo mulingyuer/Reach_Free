@@ -1,0 +1,64 @@
+@charset "utf-8";
+#cmd_md {
+    font-size: 1rem;
+}
+#cmd_md h1,#cmd_md h2,#cmd_md h3,#cmd_md h4,#cmd_md h5,#cmd_md h6 {
+    margin-bottom: 15px;
+}
+#cmd_md img{
+    max-width: 100%;
+}
+#cmd_md h2 {
+    border-left: 4px solid #09C878;
+	padding-left: 10px;
+}
+#cmd_md a:hover {
+	color: red;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23ff3300' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
+    background-size: auto;
+	background-size: 20px auto;
+	animation: waveMove 1s infinite linear;
+}
+@keyframes waveMove {
+	from { background-position: 0 100%; }
+	to { background-position:-20px 100%; }
+}
+
+#cmd_md table th,#cmd_md table td {
+    min-width: 185px;
+}
+
+
+
+
+
+
+
+
+#cmd_md pre {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+}
+.hljs {
+    border: 0;
+    font-size: 12px;
+    display: block;
+    padding: 1px;
+    margin: 0;
+    width: 100%;
+    font-weight: 200;
+    white-space: pre-wrap;
+    max-height:none;
+}
+.hljs ol {
+    list-style: decimal;
+    margin: 0px 0px 0 40px !important;
+    padding: 0px;
+}
+.hljs ol li {
+    list-style: decimal-leading-zero;
+    padding: 5px!important;
+    padding-left: .5rem !important;
+    margin: 0 !important;
+    white-space: pre;
+}

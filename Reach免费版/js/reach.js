@@ -1,5 +1,21 @@
 $(document).ready(function () {
 
+  //nav图标
+  let $blog_nav = $('#blog-nav');
+  const blog_nav_icon = {
+    links: 'icon-link-solid',
+    about: 'icon-user-alt-solid',
+    faq: 'icon-question-circle'
+  }
+  $blog_nav.find('.self-page').each(function () {
+    const href = this.href.toLowerCase();
+    for (let i in blog_nav_icon) {
+      if (href.match(i)) {
+        $(this).children('i').addClass(blog_nav_icon[i]);
+      }
+    };
+  });
+
   //返回顶部
   let $go_top = $('#go-top');
   let $window = $(window);
@@ -27,10 +43,6 @@ $(document).ready(function () {
   if (!$user_img.attr('class')) {
     $user_img.addClass('rounded-circle');
   };
-
-  //面包屑
-  let $breadcrumb = $('#breadcrumb');
-  $breadcrumb.find('a').addClass('text-reset');
 
   //首页日历
   let $dash_daterange = $("#dash-daterange");
@@ -92,6 +104,19 @@ $(document).ready(function () {
       .replace(/\[\s\]/g, '<i class="fonts icon-duoxuankuang mr-1"></i>');
     $cmd_md.html(todo_html);
   }
+
+  //自定义链接图标
+  $cmd_md.find('a[href^="http"]').prepend('<i class="fonts mx-1 icon-lianjie"></i>')
+    .end().find('a[href$="pdf"]').prepend('<i class="fonts mx-1 icon-pdf"></i>')
+    .end().find('a[href$="zip"]').prepend('<i class="fonts mx-1 icon-zip"></i>')
+    .end().find('a[href$="7z"]').prepend('<i class="fonts mx-1 icon-z"></i>')
+    .end().find('a[href$="rar"]').prepend('<i class="fonts mx-1 icon-rar"></i>')
+    .end().find('a[href$="txt"]').prepend('<i class="fonts mx-1 icon-txt"></i>')
+    .end().find('a[href$="doc"]').prepend('<i class="fonts mx-1 icon-DOC"></i>')
+    .end().find('a[href$="ppt"]').prepend('<i class="fonts mx-1 icon-ppt"></i>')
+    .end().find('a[href$="xlsx"]').prepend('<i class="fonts mx-1 icon-xlsx"></i>');
+
+
   //图箱
   let $cmd_md_Img = $cmd_md.find('img');
   $cmd_md_Img.each(function () {
@@ -123,6 +148,13 @@ $(document).ready(function () {
   $comments.find('.media > img').addClass('mr-2 rounded').attr({ width: '30', height: '32' });
   $comments.find('.comments-text > p').addClass('d-inline-block');
   $comments.find('.comments-reply a').addClass('text-reset');
+
+  //限制评论字数
+  let $textarea = $('#textarea');
+  if ($textarea.length) {
+    let $limittext_info = $('#limittext-info');
+    $textarea.limiter(500, $limittext_info);
+  }
 
   //评论page样式
   let $comments_page_li = $('#comments-page li');

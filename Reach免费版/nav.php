@@ -1,6 +1,6 @@
 <div class="topnav">
   <div class="container-fluid">
-    <nav class="navbar navbar-dark navbar-expand-lg topnav-menu">
+    <nav class="navbar navbar-dark navbar-expand-lg topnav-menu" id="blog-nav">
       <div class="collapse navbar-collapse" id="topnav-menu-content">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -32,14 +32,24 @@
               <?php endwhile; ?>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php $this->options->siteUrl(); ?>links.html"><i class="fonts icon-link-solid mr-1"></i>友链</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php $this->options->siteUrl(); ?>about.html"><i class="fonts icon-user-alt-solid mr-1"></i>关于</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="<?php $this->options->siteUrl(); ?>faq.html"><i class="fonts icon-question-circle mr-1"></i>FAQ</a>
+          <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
+          <?php while ($pages->next()) : ?>
+            <li class="nav-item">
+              <a class="nav-link self-page" href="<?php $pages->permalink(); ?>"><i class="fonts mr-1"></i><?php $pages->title(); ?></a>
+            </li>
+          <?php endwhile; ?>
+          <li class="nav-item d-lg-none">
+            <div class="app-search" style="height: 48px;">
+              <form id="search2" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
+                <div class="input-group">
+                  <input type="text" id="s" name="s" class="form-control h-100 bg-white" placeholder="输入关键词...">
+                  <span class="fonts icon-search-solid"></span>
+                  <div class="input-group-append">
+                    <button class="btn btn-light p-0 pl-2 pr-2" type="submit">Search</button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </li>
         </ul>
       </div>
